@@ -10,10 +10,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: Building
       run: yarn && yarn build
-    - name: Access build folder
-      run : cd build
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         REPO_OWNER: medartus
+        SOURCE: build
