@@ -25,13 +25,15 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@master
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build
-          BUILD_SCRIPT: yarn && yarn build
+    - uses: actions/checkout@v1
+    - name: Create Release Folder
+      run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
+    - name: Switch to Release Folder
+      run: |
+        cd release
+        ls -la
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        REPO_OWNER: medartus
