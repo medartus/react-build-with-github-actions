@@ -20,6 +20,8 @@ jobs:
         type: 'zip'
         filename: 'release.zip'
         directory: 'build'
+    - name: LS
+      run: ls
     - name: Upload Release
       uses: actions/upload-artifact@v2
       with:
