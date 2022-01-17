@@ -23,7 +23,7 @@ jobs:
     - name: LS
       run: ls
     - name: Upload Release
-      uses: actions/upload-artifact@v2
+      uses: ncipollo/release-action@v1
       with:
-        name: my-artifact
-        path: 'release.zip'
+        artifacts: "release.zip"
+        token: ${{ secrets.TOKEN }}
