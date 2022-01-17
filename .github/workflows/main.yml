@@ -21,7 +21,7 @@ jobs:
         filename: 'release.zip'
         directory: 'build'
     - name: Upload Release
-      uses: ncipollo/release-action@v1
+      uses: actions/upload-artifact@v2
       with:
-        artifacts: "release.zip"
-        token: ${{ secrets.TOKEN }}
+        name: my-artifact
+        path: 'release.zip'
