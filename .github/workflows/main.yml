@@ -25,4 +25,6 @@ jobs:
       with:
         artifacts: "extension.zip"
         bodyFile: "install.md"
+        removeArtifacts: true
+        generateReleaseNotes: true
         token: ${{ secrets.TOKEN }}
