@@ -11,9 +11,10 @@ jobs:
       with:
         fetch-depth: 0  # need this for all history for all branches and tags
     - name: Building
-      run: yarn && yarn build && cd build
-    - name: Create Release
-      id: create_release
-      uses: nickatnight/releases-action@v3
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      run: yarn && yarn build
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'release.zip'
+        directory: 'build'
